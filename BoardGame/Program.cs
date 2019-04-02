@@ -14,7 +14,7 @@ namespace BoardGame
             Board board = new Board();
             // Cell cell = new Cell();
             // Draw board cell
-            board.DrawCell();
+            board.DrawBoard();
 
             Console.WriteLine("Press any key to close");
             Console.ReadLine();

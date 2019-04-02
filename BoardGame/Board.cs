@@ -6,74 +6,67 @@ using System.Threading.Tasks;
 
 namespace BoardGame
 {
-    public class Board : Cell
+    public class Board 
     {
         // Board properties
-        int row, col; // rows and columns
+        // int row, col; // rows and columns
         // array for cells
         // private char Symbol[] symbols;
 
         // Draws a game board of x * y dimensions
-        public void DrawCell()
+        public void DrawBoard()
         {
             string inputRows;
             string inputColumns;
             int rows, columns;
-            Console.Write("Enter a value for x");
-            inputRows = Console.ReadLine();
-            rows = Convert.ToInt32(inputRows);
-            Console.Write("Enter a value for y");
-            inputColumns = Console.ReadLine();
-            columns = Convert.ToInt32(inputColumns);
+
+            do
+            {
+                Console.Write("Enter a value for x ");
+                inputRows = Console.ReadLine();
+                rows = Convert.ToInt32(inputRows);
+            }
+            while (rows % 4 != 0);
+
+            do
+            {
+                Console.Write("Enter a value for y ");
+                inputColumns = Console.ReadLine();
+                columns = Convert.ToInt32(inputColumns);
+            }
+            while (columns % 4 != 0);
+      
+            int minHeight = 3; // x
+            int minWidth = 2;  // y
 
             // Print characters
-            for (int row = 0; row < 4; row++)
+            for (int row = 0; row <= rows; row++)
             {
-                for (int column = 0; column < 4; col++)
+                for (int column = 0; column <= columns; column++)
                 {
-                    if (row % 2 == 0 || row == 0)
+                    if (column % 2 == 0 && row % 2 == 0)
                     {
-                        Console.WriteLine(" " + "-" + " ");
+                        Console.Write(" ");
                     }
-                    else if (row % 2 != 0)
+
+                    if (column % 2 != 0 && row % 2 == 0)
                     {
-                        Console.WriteLine("|" + " " + "|");
+                        Console.Write("|");
+                    }
+
+                    if (row % 2 != 0 && column % 2 != 0)
+                    {
+                        Console.Write("+");
+                    }
+
+                    if (row % 2 != 0 && column % 2 == 0)
+                    {
+                        Console.Write("-");
                     }
                 }
-                
-                // Console.WriteLine(" " + "-" + " ");
-                // Console.WriteLine("|" + " " + "|");
-                // Console.WriteLine(" " + "-" + " ");
+
+                Console.WriteLine();
             }
-            /*
-            for (col = 0; col < 2; col++)
-            {
-                if (row % 2 == 0)
-                {
-                    Console.WriteLine(" " + "-" + " ");
-                }
-                else if (row % 2 != 0)
-                {
-                    Console.WriteLine("|" + " " + "|");
-                }              
-            }
-            */
-
-
-
-            // Console.WriteLine("+" + "-" + "+");
-            // Console.WriteLine("|" + " " + "|");
-            // Console.WriteLine("+" + "-" + "+");
-
-            // Console.WriteLine("|");
-
         }
-
-        /*
-        public void DrawBoard()
-        {
-
-        }
-        */
     }
 }
